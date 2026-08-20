@@ -1,0 +1,616 @@
+[
+  {
+    "service": "Github",
+    "severity": "high",
+    "fingerprint": [
+      "There isn't a GitHub Pages site here.",
+      "For root URLs (like http://example.com/) you must provide an index.html file",
+      "The site configured at this address does not contain the requested file.",
+      "For root URLs (like <code>http://example.com/</code>)"
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "Aftership",
+    "severity": "high",
+    "fingerprint": [
+      "Oops.</h2><p class=\"text-muted text-tight\">The page you're looking for doesn't exist."
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "AgileCRM",
+    "severity": "high",
+    "fingerprint": [
+      "Sorry, this page is no longer available."
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "Aha",
+    "severity": "high",
+    "fingerprint": [
+      "There is no portal here ... sending you back to Aha!"
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "Airee",
+    "severity": "high",
+    "fingerprint": [
+      "Ошибка 402. Сервис Айри.рф не оплачен"
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "Anima",
+    "severity": "high",
+    "fingerprint": [
+      "If this is your website and you've just created it, try refreshing in a minute"
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "Announcekit",
+    "severity": "high",
+    "fingerprint": [
+      "Error 404 - AnnounceKit"
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "AWS/S3",
+    "severity": "high",
+    "fingerprint": [
+      "The specified bucket does not exist",
+      "BucketName"
+    ],
+    "matchcondition": "ALL"
+  },
+  {
+    "service": "Bigcartel",
+    "severity": "high",
+    "fingerprint": [
+      "<h1>Oops! We couldn&#8217;t find that page.</h1>"
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "Bitbucket",
+    "severity": "high",
+    "fingerprint": [
+      "Repository not found"
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "CampaignMonitor",
+    "severity": "high",
+    "fingerprint": [
+      "Email Newsletter Software",
+      "css.createsend1.com"
+    ],
+    "matchcondition": "ALL"
+  },
+  {
+    "service": "Canny",
+    "severity": "high",
+    "fingerprint": [
+      "Company Not Found",
+      "There is no such company. Did you enter the right URL?"
+    ],
+    "matchcondition": "ALL"
+  },
+  {
+    "service": "Cargo",
+    "severity": "high",
+    "fingerprint": [
+      "If you're moving your domain away from Cargo you must make this configuration through your registrar's DNS control panel."
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "Cargo Collective",
+    "severity": "high",
+    "fingerprint": [
+      "<div class=\"notfound\">",
+      "404 Not Found<br>"
+    ],
+    "matchcondition": "ALL"
+  },
+  {
+    "service": "Clever Cloud",
+    "severity": "high",
+    "fingerprint": [
+      "The application you're trying to access doesn't seem to exist",
+      "support@clever-cloud.com"
+    ],
+    "matchcondition": "ALL"
+  },
+  {
+    "service": "Flexbe",
+    "severity": "high",
+    "fingerprint": [
+      "Domain not configured",
+      "flexbe.com"
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "Framer",
+    "severity": "high",
+    "fingerprint": [
+      "Site Not Found | Framer"
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "Frontify",
+    "severity": "high",
+    "fingerprint": [
+      "404 - Page Not Found",
+      "Oops… looks like you got lost"
+    ],
+    "matchcondition": "ALL"
+  },
+  {
+    "service": "Gemfury",
+    "severity": "high",
+    "fingerprint": [
+      "404: This page could not be found."
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "Getresponse",
+    "severity": "high",
+    "fingerprint": [
+      "With GetResponse Landing Pages, lead generation has never been easier"
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "Ghost",
+    "severity": "high",
+    "fingerprint": [
+      "Site unavailable\\.&#124;Failed to resolve DNS path for this host"
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "Gitbook",
+    "severity": "high",
+    "fingerprint": [
+      "If you need specifics, here's the error",
+      "Domain not found"
+    ],
+    "matchcondition": "ALL"
+  },
+  {
+    "service": "GoHire",
+    "severity": "high",
+    "fingerprint": [
+      "You may have followed an invalid link or the job you are looking for has been archived"
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "GreatPages",
+    "severity": "high",
+    "fingerprint": [
+      "Página não encontrada (Erro 404)"
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "Hatenablog",
+    "severity": "high",
+    "fingerprint": [
+      "404 Blog is not found"
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "HelpDocs",
+    "severity": "high",
+    "fingerprint": [
+      "You've tried to access an account/page that does not exist"
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "Helpjuice",
+    "severity": "high",
+    "fingerprint": [
+      "We could not find what you're looking for."
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "Helprace",
+    "severity": "high",
+    "fingerprint": [
+      "Alias not configured!",
+      "Admin of this Helprace account needs to set up domain alias"
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "Helpscout",
+    "severity": "high",
+    "fingerprint": [
+      "No settings were found for this company:"
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "Hubspot",
+    "severity": "high",
+    "fingerprint": [
+      "Domain not found",
+      "does not exist in our system"
+    ],
+    "matchcondition": "ALL"
+  },
+  {
+    "service": "Intercom",
+    "severity": "high",
+    "fingerprint": [
+      "<h1 class=\"headline\">Uh oh. That page doesn\\’t exist.</h1>",
+      "This page is reserved for artistic dogs."
+    ],
+    "matchcondition": "ALL"
+  },
+  {
+    "service": "Jazzhr",
+    "severity": "high",
+    "fingerprint": [
+      "This account no longer active"
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "Jetbrains",
+    "severity": "high",
+    "fingerprint": [
+      "is not a registered InCloud YouTrack."
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "Kinsta",
+    "severity": "high",
+    "fingerprint": [
+      "No Site For Domain"
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "Launchrock",
+    "severity": "high",
+    "fingerprint": [
+      "It looks like you may have taken a wrong turn somewhere. Don't worry...it happens to all of us."
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "Leadpages",
+    "severity": "high",
+    "fingerprint": [
+      "<h2 class=\"lp-headline text-align-center subhead\">This page couldn't be found, so let's get you turned around!</h2>",
+      "The page you're looking for may have moved.",
+      "Double check that you have the right web address and give it another go!"
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "Mashery",
+    "severity": "high",
+    "fingerprint": [
+      "Unrecognized domain <strong>"
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "Meteor",
+    "severity": "high",
+    "fingerprint": [
+      "404 Not Found: No applications registered for host '"
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "Netlify",
+    "severity": "high",
+    "fingerprint": [
+      "Not Found - Request ID:"
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "Ngrok",
+    "severity": "high",
+    "fingerprint": [
+      "ngrok.io not found",
+      "Tunnel *.ngrok.io not found"
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "Pagewiz",
+    "severity": "high",
+    "fingerprint": [
+      "404 - Page Not Found",
+      "Start Your New Landing Page Now!",
+      "pagewiz"
+    ],
+    "matchcondition": "ALL"
+  },
+  {
+    "service": "Pantheon",
+    "severity": "high",
+    "fingerprint": [
+      "The gods are wise, but do not know of the site which you seek."
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "Pingdom",
+    "severity": "high",
+    "fingerprint": [
+      "Public Report Not Activated",
+      "This public report page has not been activated by the user"
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "Proposify",
+    "severity": "high",
+    "fingerprint": [
+      "If you need immediate assistance, please contact <a href=\"mailto:support@proposify.biz"
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "Readme",
+    "severity": "high",
+    "fingerprint": [
+      "Project doesnt exist... yet!"
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "ReadtheDocs",
+    "severity": "high",
+    "fingerprint": [
+      "unknown to Read the Docs"
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "Shopify",
+    "severity": "high",
+    "fingerprint": [
+      "To finish setting up your new web address, go to your domain settings, click \"Connect existing domain\"",
+      "Sorry, this shop is currently unavailable.",
+      "Sorry, this store is currently unavailable."
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "Short",
+    "severity": "high",
+    "fingerprint": [
+      "Link does not exist",
+      "This domain is not configured on Short.io"
+    ],
+    "matchcondition": "ALL"
+  },
+  {
+    "service": "Simplebooklet",
+    "severity": "high",
+    "fingerprint": [
+      "We can't find this <a href=\"https://simplebooklet.com"
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "Smartjob",
+    "severity": "high",
+    "fingerprint": [
+      "Job Board Is Unavailable",
+      "This job board website is either expired",
+      "This job board website is either expired or its domain name is invalid."
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "Smugmug",
+    "severity": "high",
+    "fingerprint": [
+      "'{\"text\":\"Page Not Found\"'"
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "Softr",
+    "severity": "high",
+    "fingerprint": [
+      "The application you were looking for was built on Softr",
+      "Get started with Softr"
+    ],
+    "matchcondition": "ALL"
+  },
+  {
+    "service": "Sprintful",
+    "severity": "high",
+    "fingerprint": [
+      "The user account associated with this calendar has been deactivated.",
+      "Please contact the owner of this calendar directly in order to book a meeting.",
+      "This domain name does not have a default page configured."
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "Squadcast",
+    "severity": "high",
+    "fingerprint": [
+      "There doesn’t seem to be an active status page associated with this URL.",
+      "Please check the URL and try again."
+    ],
+    "matchcondition": "ALL"
+  },
+  {
+    "service": "Strikingly",
+    "severity": "high",
+    "fingerprint": [
+      "But if you're looking to build your own website",
+      "you've come to the right place."
+    ],
+    "matchcondition": "ALL"
+  },
+  {
+    "service": "Surge",
+    "severity": "high",
+    "fingerprint": [
+      "project not found"
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "Surveygizmo",
+    "severity": "high",
+    "fingerprint": [
+      "data-html-name"
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "SurveySparrow",
+    "severity": "high",
+    "fingerprint": [
+      "Account not found.",
+      "ouch!",
+      "SurveySparrow"
+    ],
+    "matchcondition": "ALL"
+  },
+  {
+    "service": "Tave",
+    "severity": "high",
+    "fingerprint": [
+      "<h1>Error 404: Page Not Found</h1>"
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "Teamwork",
+    "severity": "high",
+    "fingerprint": [
+      "Oops - We didn't find your site."
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "Tilda",
+    "severity": "high",
+    "fingerprint": [
+      "Please go to the site settings and put the domain name in the Domain tab."
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "Uberflip",
+    "severity": "high",
+    "fingerprint": [
+      "Non-hub domain, The URL you've accessed does not provide a hub."
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "Uptime",
+    "severity": "high",
+    "fingerprint": [
+      "<html><body>You are being <a href=\"https://uptime.betterstack.com\">redirected</a>.</body></html>"
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "UpTimerBot",
+    "severity": "high",
+    "fingerprint": [
+      "^page not found$"
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "Uservoice",
+    "severity": "high",
+    "fingerprint": [
+      "This UserVoice subdomain is currently available!"
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "Vend",
+    "severity": "high",
+    "fingerprint": [
+      "Looks like you've traveled too far into cyberspace."
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "Wishpond",
+    "severity": "high",
+    "fingerprint": [
+      "https://www.wishpond.com/404?campaign=true",
+      "Oops! There isn’t a Wishpond Campaign published to this page."
+    ],
+    "matchcondition": "ANY"
+  },
+  {
+    "service": "Wix",
+    "severity": "high",
+    "fingerprint": [
+      "Error ConnectYourDomain occurred",
+      "wixErrorPagesApp"
+    ],
+    "matchcondition": "ALL"
+  },
+  {
+    "service": "WordPress",
+    "severity": "high",
+    "fingerprint": [
+      "Do you want to register",
+      ".wordpress.com</em> doesn&#8217;t&nbsp;exist"
+    ],
+    "matchcondition": "ALL"
+  },
+  {
+    "service": "Worksites",
+    "severity": "high",
+    "fingerprint": [
+      "Company Not Found",
+      "worksites.net"
+    ],
+    "matchcondition": "ALL"
+  },
+  {
+    "service": "Wufoo",
+    "severity": "high",
+    "fingerprint": [
+      "Profile not found",
+      "Hmmm....something is not right."
+    ],
+    "matchcondition": "ALL"
+  },
+  {
+    "service": "Zendesk",
+    "severity": "high",
+    "fingerprint": [
+      "this help centre no longer exists",
+      "Help Centre Closed"
+    ],
+    "matchcondition": "ANY"
+  }
+]
