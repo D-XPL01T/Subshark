@@ -1,14 +1,5 @@
 # SubShark
 
-   _____ _    _ ____   _____ _    _          _____  _  __
-  / ____| |  | |  _ \ / ____| |  | |   /\   |  __ \| |/ /
- | (___ | |  | | |_) | (___ | |__| |  /  \  | |__) | ' / 
-  \___ \| |  | |  _ < \___ \|  __  | / /\ \ |  _  /|  <  
-  ____) | |__| | |_) |____) | |  | |/ ____ \| | \ \| . \ 
- |_____/ \____/|____/|_____/|_|  |_/_/    \_\_|  \_\_|\_\
-                                                         
-                                                         
-
 > A fast, concurrent subdomain takeover scanner that identifies potential hijacking vulnerabilities by matching HTTP response bodies against predefined service fingerprints.
 
 **Developed by D-XPL01T**
