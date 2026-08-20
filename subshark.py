@@ -13,6 +13,7 @@ import urllib.request
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor
 
+# Import the banner module from the same directory
 import banner
 
 # ==========================================
@@ -64,13 +65,37 @@ def delete_resume(path):
 # Configuration & Fingerprints
 # ==========================================
 def get_default_fingerprints_path():
+    # FIXED: Changed "domjack" to "subshark"
     return str(Path.home() / ".config" / "subshark" / "fingerprints.json")
 
 def ensure_config_directory(verbose):
+    # FIXED: Changed "domjack" to "subshark"
     config_dir = Path.home() / ".config" / "subshark"
     config_dir.mkdir(parents=True, exist_ok=True)
     if verbose:
         print(f"[*] Config directory: {config_dir}", file=sys.stderr)
+
+def download_fingerprints(url, dest_path, verbose):
+    if verbose:
+        print(f"[*] Downloading fingerprints.json from {url}", file=sys.stderr)
+    
+    req = urllib.request.Request(url)
+    try:
+        with urllib.request.urlopen(req, timeout=30) as response:
+            body = response.read()
+    except Exception as e:
+        raise Exception(f"failed to download fingerprints: {e}")
+        
+    try:
+        json.loads(body)
+    except Exception as e:
+        raise Exception(f"downloaded file is not valid JSON: {e}")
+        
+    with open(dest_path, 'wb') as f:
+        f.write(body)
+        
+    if verbose:
+        print(f"[*] Saved fingerprints.json to {dest_path}", file=sys.stderr)
 
 def get_fingerprints_path(custom_path, verbose):
     if custom_path:
@@ -79,10 +104,8 @@ def get_fingerprints_path(custom_path, verbose):
     default_path = get_default_fingerprints_path()
     if not os.path.exists(default_path):
         ensure_config_directory(verbose)
-        print(f"[!] Fingerprints file not found at: {default_path}", file=sys.stderr)
-        print("[!] Please provide a valid fingerprints.json using the --fingerprints flag,", file=sys.stderr)
-        print("[!] or place it in the default directory mentioned above.", file=sys.stderr)
-        sys.exit(1)
+        github_url = "https://raw.githubusercontent.com/D-XPL01T/Subshark/refs/heads/main/fingerprints.json"
+        download_fingerprints(github_url, default_path, verbose)
         
     return default_path
 
@@ -190,6 +213,7 @@ def format_output(service, severity, url, matched_fingerprints, no_color):
 # Main Execution
 # ==========================================
 def main():
+    # FIXED: Updated description to SubShark
     parser = argparse.ArgumentParser(description="SubShark - Fast Subdomain Hijacking Scanner")
     parser.add_argument("--timeout", type=int, default=30, help="Timeout in seconds for HTTP requests")
     parser.add_argument("-H", "--User-Agent", dest="user_agent", default="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36", help="Custom User-Agent header")
@@ -208,11 +232,13 @@ def main():
     args = parser.parse_args()
     
     if args.version:
+        # FIXED: Added 'banner.' prefix
         banner.print_banner()
         banner.print_version()
         return
         
     if not args.silent:
+        # FIXED: Added 'banner.' prefix
         banner.print_banner()
         
     if args.es and args.onlycheck:
@@ -238,6 +264,7 @@ def main():
             if url:
                 urls.append(url)
     except KeyboardInterrupt:
+        # FIXED: Proper newline escape
         print("\nInterrupted while reading input.", file=sys.stderr)
         sys.exit(0)
             
@@ -266,6 +293,7 @@ def main():
         nonlocal interrupted
         if not interrupted:
             interrupted = True
+            # FIXED: Proper newline escape
             print("\n[*] Interrupt received. Cancelling pending tasks and saving progress...", file=sys.stderr)
             cancel_event.set()
             
@@ -315,4 +343,96 @@ def main():
     def process_url(index, url):
         nonlocal vuln_count
         if cancel_event.is_set():
-           
+            return
+        try:
+            body, working_url = fetch_url_with_fallback(url, args.timeout, args.user_agent)
+        except Exception:
+            done_queue.put(index)
+            return
+            
+        for fp in fingerprints:
+            matched, is_match = check_fingerprint(fp, body)
+            if is_match:
+                with vuln_count_lock:
+                    vuln_count += 1
+                result = {
+                    "service": fp.get('service'),
+                    "severity": fp.get('severity'),
+                    "url": working_url,
+                    "fingerprint": matched
+                }
+                if args.json or args.output:
+                    result_queue.put(result)
+                if not args.json:
+                    format_output(fp.get('service'), fp.get('severity'), working_url, matched, args.nc)
+                    
+        done_queue.put(index)
+
+    prog_thread = threading.Thread(target=progress_collector)
+    prog_thread.start()
+    
+    collector_thread = None
+    if args.json or args.output:
+        collector_thread = threading.Thread(target=result_collector)
+        collector_thread.start()
+        
+    total = len(urls)
+    if not args.no_resume and start >= total:
+        if not args.silent:
+            print("[!] Nothing to do; all items already scanned. Use --no-resume to start over.", file=sys.stderr)
+        delete_resume(resume_path)
+        return
+
+    with ThreadPoolExecutor(max_workers=args.concurrency) as executor:
+        futures = []
+        for idx in range(start, total):
+            if cancel_event.is_set():
+                break
+            futures.append(executor.submit(process_url, idx, urls[idx]))
+            
+        for f in futures:
+            try:
+                f.result()
+            except Exception:
+                pass
+            
+    done_queue.put(None)
+    prog_thread.join()
+    
+    if next_local >= total and not interrupted:
+        delete_resume(resume_path)
+        
+    if interrupted:
+        print("[*] Progress saved to resume.cfg. Re-run the same command to resume, or use --no-resume to start over.", file=sys.stderr)
+        
+    if args.json or args.output:
+        result_queue.put(None)
+        if collector_thread:
+            collector_thread.join()
+            
+        if args.json:
+            with results_mutex:
+                print(json.dumps(results_list, indent=2))
+                
+        if args.output:
+            with open(args.output, 'w', encoding='utf-8') as f:
+                with results_mutex:
+                    for res in unique_results.values():
+                        fp_str = ", ".join(res['fingerprint'])
+                        # FIXED: Proper newline escape
+                        line = f"[{res['service']}] [{res['severity']}] {res['url']} [{fp_str}]\n"
+                        f.write(line)
+            if args.verbose:
+                print(f"[*] Saved {len(unique_results)} unique results to {args.output}", file=sys.stderr)
+    
+    # Print summary
+    scanned_count = next_local if next_local <= total else total
+    if vuln_count > 0:
+        # FIXED: Proper newline escape
+        print(f"\n{COLOR_BRIGHT_GREEN}[✓] Scan complete: {scanned_count} URL(s) scanned, {vuln_count} potential subdomain hijacking vulnerability(ies) found!{COLOR_RESET}")
+    else:
+        # FIXED: Proper newline escape
+        print(f"\n{COLOR_YELLOW}[-] Scan complete: {scanned_count} URL(s) scanned, no vulnerabilities found.{COLOR_RESET}")
+
+if __name__ == "__main__":
+    main()
